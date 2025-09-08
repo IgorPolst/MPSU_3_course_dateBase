@@ -5,11 +5,10 @@ class MenuItem:
         self.calories: int = calories
 
     def __str__(self) -> str:
-        result: str = f"{self.name}: "
+        result : str = f"{self.name}: "
         result += f"Цена: {self.price} "
         result += f"Калории: {self.calories}\n"
         return result
-
 
 class Cafe:
     def __init__(self, name: str, count_places: int):
@@ -20,7 +19,7 @@ class Cafe:
     def add_menu_item(self, item: MenuItem) -> None:
         self.menu.append(item)
 
-    def remove_menu_item(self, item: MenuItem) -> None:
+    def remove_menu_item(self, item:MenuItem) -> None:
         if item in self.menu:
             self.menu.remove(item)
 
@@ -29,26 +28,24 @@ class Cafe:
             return self.menu[index]
         else:
             return IndexError
-
+        
     def get_menu_size(self) -> int:
         return len(self.menu)
-
+        
     def get_menu_description(self) -> str:
         result: str = str()
 
         for item in self.menu:
             result += str(item)
-
+        
         return result
-
+    
     def __str__(self) -> str:
         return self.name
 
 
 class Order:
-    def __init__(
-        self, date: str = str(), order_dishes: MenuItem = [], total_price: int = 0
-    ):
+    def __init__(self, date: str = str(), order_dishes:MenuItem = [], total_price: int = 0):
         self.date: str = date
         self.ordered_dishes: list[MenuItem] = order_dishes
         self.total_price: int = total_price
@@ -57,10 +54,10 @@ class Order:
         self.ordered_dishes.append(item)
         self.total_price = 0
 
-    def remove_menu_item(self, item: MenuItem) -> None:
+    def remove_menu_item(self, item:MenuItem) -> None:
         if item in self.ordered_dishes:
             self.ordered_dishes.remove(item)
-
+        
         self.total_price = 0
 
     def get_menu_item(self, index: int) -> MenuItem:
@@ -68,30 +65,30 @@ class Order:
             return self.ordered_dishes[index]
         else:
             return IndexError
-
+        
     def get_menu_size(self) -> int:
         return len(self.ordered_dishes)
-
+        
     def calculate_price(self) -> None:
         self.total_price = 0
 
         for item in self.ordered_dishes:
             self.total_price += item.price
 
+
     def print_ordered_dishes(self) -> None:
         result: str = str()
 
         for item in self.ordered_dishes:
             result += str(item)
-
+        
         return result
 
     def __str__(self) -> str:
         result: str = f"{self.data}, "
         result += f"Цена: {self.total_price}"
-        return result
-
-
+        return result             
+    
 def main():
     it1 = MenuItem("Яичница", 150, 80)
     it2 = MenuItem("Гречка", 300, 100)
@@ -114,7 +111,6 @@ def main():
 
     print(order)
     print(order.print_ordered_dishes())
-
 
 if __name__ == "__main__":
     main()
