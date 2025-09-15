@@ -1,0 +1,28 @@
+from math import pi
+
+class Circle:      
+    def __init__(self, radius) -> object: 
+        self.radius: float = radius
+
+    def find_square(self) -> None:
+        square = round(pi * self.radius**2, ndigits=2)
+        print(f"Площадь: {square}")
+
+    def find_perimeter(self) -> None:
+        perimeter = round(2 * pi * self.radius, ndigits=2)
+        print(f"Периметер: {perimeter}")
+
+    def __str__(self) -> str:
+        return f"Радиус круга: {self.radius}"
+
+def main():   
+    circle = Circle(20)
+    circle.find_perimeter()
+    circle.find_square()
+    r: int = int(input()) ###HUy
+    print (r)
+    print(circle)
+
+if __name__ == "__main__":
+    main()
+
