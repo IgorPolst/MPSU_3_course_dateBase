@@ -1,4 +1,4 @@
-class GeometicFigure
+class GeometricFigure:
     def __init__ (self, center: tuple[int, int] = [0,0]):
         self.center = center
 
@@ -12,15 +12,23 @@ class GeometicFigure
     def __str__ (self):
         return f"{self.__class__, __name__} at {self.center}"
     
-    class Circle(GeometicFigure):
-        def __init__(self, center: tuple[int, int] = [0,0], radius: int = 0):
-            super().__init__(center)
-            self.redius = radius
+class Circle(GeometricFigure):
+    def __init__(self, center: tuple[int, int] = [0,0], radius: int = 0):
+        super().__init__(center)
+        self.radius = radius
 
-        def get_radius(self) -> int: 
-            return self.redius
+    def get_radius(self) -> int: 
+        return self.redius
+    
+    def set_radius(self, radius:int) -> None:
+        if radius > 0:
+            self.redius = radius
+        else:
+            raise ValueError
+    
+    def __str__(self):
+        return f"{super().__str__()} with raidius {self.radius}"
         
-        def set_radius(self, radius:int) -> None:
-            if 
+        
         
 
