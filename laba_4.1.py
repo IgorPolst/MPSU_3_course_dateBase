@@ -1,4 +1,4 @@
-def no_kwargs(func):
+def no_kwargs(func) -> :
     def wrapper(*args, **kwargs):
         if kwargs:
             raise TypeError
@@ -9,5 +9,9 @@ def no_kwargs(func):
 def square(x):
     return x * x
 
-print(square(4))        # 16
-print(square(x=4))      # TypeError
+def main():
+    print(square(4))        # 16
+    print(square(x=4))      # TypeError
+
+if (__name__ == "__main__"):
+    main()
