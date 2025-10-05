@@ -1,6 +1,6 @@
 from functools import wraps
 
-CURRENT_ROLE = "user"
+CURRENT_ROLE: str = "user"
 
 
 def require_role(*allowed_roles):
@@ -10,10 +10,8 @@ def require_role(*allowed_roles):
             if CURRENT_ROLE in allowed_roles:
                 return func(*args, **kwargs)
             else:
-                raise RuntimeError
-
+                raise RuntimeError("RuntimeError")
         return wrapper
-
     return decorator
 
 
@@ -23,6 +21,7 @@ def drop_table():
 
 
 def main():
+    global CURRENT_ROLE
     print(drop_table())  # RuntimeError
 
     CURRENT_ROLE = "admin"
