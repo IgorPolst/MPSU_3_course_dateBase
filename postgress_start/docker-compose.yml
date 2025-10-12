@@ -6,14 +6,16 @@ services:
     environment:
       POSTGRES_USER: igor
       POSTGRES_PASSWORD: Polst
+      POSTGRES_DB: postgres
     ports:
-      - "5430:5430"
+      - "5430:5432"
     volumes:
-      - /data/mpgu_postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   pgadmin_mpgu:
     image: dpage/pgadmin4
     container_name: pgadmin_mpgu
+    restart: unless-stopped
     environment:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
       PGADMIN_DEFAULT_PASSWORD: adminpass
@@ -25,4 +27,5 @@ services:
       - pgadmin_data:/var/lib/pgadmin
 
 volumes:
+  postgres_data:
   pgadmin_data:
