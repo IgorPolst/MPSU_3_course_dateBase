@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS restaurant.menu_items(
     id SERIAL PRIMARY KEY,
     dish TEXT NOT NULL UNIQUE,
     category TEXT NOT NULL,
-    price NUMERIC(6, 2),
+    price NUMERIC(6, 2) NOT NULL,
     status TEXT DEFAULT 'available'
 );
 
