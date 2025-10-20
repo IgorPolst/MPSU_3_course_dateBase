@@ -1,0 +1,31 @@
+services:
+  postgres_mpgu:
+    image: postgres:15
+    container_name: postgres_dmitry
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: dmitry
+      POSTGRES_PASSWORD: MinaPassword
+      POSTGRES_DB: dmitry_db
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres_data_dmitry:/var/lib/postgresql/data
+
+  pgadmin_mpgu:
+    image: dpage/pgadmin4
+    container_name: pgadmin_dmitry
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: dmitry.min@example.com
+      PGADMIN_DEFAULT_PASSWORD: dmitrypass
+    ports:
+      - "5051:80"
+    depends_on:
+      - postgres_mpgu
+    volumes:
+      - pgadmin_data_dmitry:/var/lib/pgadmin
+
+volumes:
+  postgres_data_dmitry:
+  pgadmin_data_dmitry:
